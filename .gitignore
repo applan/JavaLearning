@@ -1,0 +1,9 @@
+### Class Directory ### 
+bin/
+
+### Setting Directory ###
+.settings/
+
+### Setting File ###
+.classpath
+.project
