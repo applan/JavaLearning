@@ -34,8 +34,8 @@ public class Main_220208 {
 	private static int partition(int[] arr, int start, int end) {
 		int pivot = arr[(start + end) / 2];
 		while(start <= end) {
-			while(start < pivot) start++;
-			while(end > pivot) end--;
+			while(arr[start] < pivot) start++;
+			while(arr[end] > pivot) end--;
 			if(start <= end) {
 				SwapUtil.swap(arr, start, end);
 				start++;
