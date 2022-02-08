@@ -21,14 +21,12 @@ public class Main_220208 {
 	
 	private static void quickSortAction(int[] arr, int start, int end) {
 		int part2 = partition(arr, start, end);
-		System.out.println(part2);
 		if(start < part2 - 1) {
 			quickSortAction(arr, start, part2 - 1);
 		}
 		if(end > part2) {
 			quickSortAction(arr, part2, end);
 		}
-		System.out.println(part2);
 	}
 	
 	private static int partition(int[] arr, int start, int end) {
