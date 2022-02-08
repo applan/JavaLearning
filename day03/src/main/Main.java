@@ -1,6 +1,7 @@
 package main;
 
 import action.RecursiveAction;
+import util.PrintUtil;
 
 /**
  * <pre>
@@ -17,6 +18,8 @@ public class Main {
 		 
 		int[] arr = {3, 9, 4, 7, 5, 0, 1, 6, 8, 2};
 		
-		RecursiveAction.quickSort(arr, 4);
+		PrintUtil.print(arr);
+		RecursiveAction.quickSort(arr);
+		PrintUtil.print(arr);
 	}
 }

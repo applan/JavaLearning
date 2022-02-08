@@ -1,6 +1,5 @@
 package action;
 
-import util.PrintUtil;
 import util.SwapUtil;
 
 /**
@@ -18,10 +17,9 @@ public class RecursiveAction {
 	 * Quick 정렬 시작 메소드 
 	 * </pre>
 	 * @param arr - 퀵 정렬이 이루어질 int 배열 
-	 * @param pivotIndex - 기준점
 	 */
-	public static void quickSort(int[] arr, int pivotIndex) {
-		quickSortAction(arr, pivotIndex);
+	public static void quickSort(int[] arr) {
+		quickSortAction(arr, 0, arr.length-1);
 	}
 	
 	/**
@@ -29,43 +27,43 @@ public class RecursiveAction {
 	 * 재귀함수를 이용한 퀵 정렬 함수 
 	 * </pre>
 	 * @param arr - 퀵 정렬이 이루어지고있는 int 배열
-	 * @param last
+	 * @param start - 
+	 * @param end -
 	 */
-	private static void quickSortAction(int[] arr, int pivotIndex) {
-
-		PrintUtil.print(arr);
-		int partitionSize = arr.length; 
-		if(partitionSize > 1) {
-			// 기준점이 중간일때 제일 첫번째 값을 start로 잡음
-			int start = 0;
-			// 기준점이 중간일때 제일 마지막 값을 end로 잡음
-			int end = partitionSize - 1;
-			int pivot = arr[pivotIndex];
-			for(int i=0; i<partitionSize; i++) {
-				System.out.println(i);
-				if(arr[i] > pivot) {
-					System.out.println("? " + arr[i]);
-					start = i;
-				}
-				if(arr[partitionSize-1-i] < pivot) {
-					System.out.println("???? " + arr[partitionSize-1-i]);
-					end = end - i;
-				}
-				if(arr[start] > pivot && arr[end] < pivot) {
-					System.out.println();
-					System.out.println(String.format("변경 감지!!! [ %d %d ] -> [ %d %d ]", start, arr[start], end, arr[end]));
-					int temp = arr[end];
-					arr[end] = arr[start];
-					arr[start] = temp;
-					System.out.println(String.format("변경 완료 [ %d %d ] -> [ %d %d ]", start, arr[start], end, arr[end]));
-					System.out.println();
-				}
-				System.out.println(String.format("[%d %d] | [%d %d]", start, arr[start], end, arr[end]));
-				//System.out.println(String.format("[i : %d / v : %d] %d | %d | %d", i, arr[i], start, arr[pivotIndex], end));
+	private static void quickSortAction(int[] arr, int start, int end) {
+		System.out.println(String.format("%d %d", start, end));
+		int part2 = partition(arr, start, end);
+		// 왼쪽 파티션 
+		if (start < part2 - 1) {
+			quickSortAction(arr, start, part2 - 1);
+		}
+		// 오른쪽 파티션
+		if (part2 < end) {
+			quickSortAction(arr, part2, end);
+		}
+	}
+	
+	/**
+	 * <pre>
+	 * 파티션을 나눠주는 함수
+	 * </pre>
+	 * @param arr - 퀵 정렬이 이루어지고있는 int 배열
+	 * @param start - 
+	 * @param end -
+	 */
+	private static int partition(int[] arr, int start, int end) {
+		// 파티션의 중간 값을 pivot으로 정해줌
+		int pivot = arr[(start + end) / 2];
+		while(start <= end) {
+			while (arr[start] < pivot) start ++;
+			while (arr[end] > pivot) end--;
+			if(start <= end) {
+				SwapUtil.swap(arr, start, end);
+				start++;
+				end--;
 			}
 		}
-		
-		PrintUtil.print(arr);
+		return start;
 	}
 	
 }
