@@ -23,7 +23,7 @@ public class BubbleSort{
 		
 		for(int i=0; i < length; i++){
 			
-			// 마지막 데이터까지 갈 필요 없기 때문에 -i 을 해줌 ( 증가하는 i만큼 덜 돌게됨 )
+			// 마지막 데이터까지 갈 필요 없기 때문에 -i 을 해줌 ( i가 증가하는 i만큼 덜 돌게됨 )
 			for(int j=0; j < length-i; j++){
 				// 현재 돌고있는 데이터가 인접한 데이터보다 값이 큰 경우 swap이 필요
 				if(arr[j] > arr[j+i]){
